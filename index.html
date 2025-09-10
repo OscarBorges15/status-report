@@ -28,8 +28,8 @@
     h1{font-size:18px;margin:0;color:white}
     .meta{font-size:13px;color:#cbd5e1}
 
-    .status-container{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-    .status-chip{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer;background:var(--primary);color:var(--secondary);text-align:center;font-size:14px;min-height:44px;white-space:nowrap;line-height:1.2}
+    .status-container{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;width:100%;max-width:200px}
+    .status-chip{display:inline-flex;gap:8px;align-items:center;justify-content:center;align-self:flex-end;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer;background:var(--primary);color:var(--secondary);text-align:center;font-size:14px;min-height:44px}
 
     .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
     .left{display:flex;flex-direction:column;gap:12px}
@@ -64,8 +64,8 @@
     @media (max-width:900px){
       .grid{grid-template-columns:1fr}
       .right{order:2}.left{order:1}
-      .status-container{margin-left:auto;align-items:flex-end;width:100%}
-      .status-chip{align-self:flex-end;font-size:16px;padding:10px 18px;min-height:48px;white-space:nowrap}
+      .status-container{align-items:flex-start;max-width:100%;width:100%}
+      .status-chip{align-self:flex-start;font-size:16px;padding:10px 18px;min-height:48px}
     }
   </style>
 </head>
