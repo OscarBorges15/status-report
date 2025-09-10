@@ -22,8 +22,8 @@
     .wrap{max-width:980px;margin:28px auto;padding:18px}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 22px rgba(12,26,75,0.06);padding:var(--pad)}
 
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--secondary);color:white;border-radius:var(--radius);padding:12px 16px}
-    .project{display:flex;gap:14px;align-items:center;flex:1}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;background:var(--secondary);color:white;border-radius:var(--radius);padding:12px 16px}
+    .project{display:flex;gap:14px;align-items:center}
     .logo{width:56px;height:56px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:var(--secondary);font-weight:700;font-size:18px}
     h1{font-size:18px;margin:0;color:white}
     .meta{font-size:13px;color:#cbd5e1}
@@ -49,6 +49,7 @@
     .progress{margin-top:6px;height:10px;background:#e6f5eb;border-radius:999px;overflow:hidden}
     .progress .fill{height:100%;background:var(--primary)}
     .progress-label{font-size:12px;color:var(--muted);margin-top:2px}
+    .imp-alert{margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#b91c1c;font-size:13px;font-weight:600}
 
     .summary{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(0,225,45,0.06),transparent);border:1px solid rgba(0,225,45,0.2)}
     .summary p{margin:0;color:var(--secondary)}
@@ -93,6 +94,7 @@
                 <h3>JDPI · Pix Automático (API v5.2.1 / v1.1.1)</h3>
                 <div class="progress"><div class="fill" style="width:10%"></div></div>
                 <div class="progress-label">10% concluído</div>
+                <div class="imp-alert">🚫 Impedimento (10/09): dúvidas sobre Hash enviadas — <strong>aguardando retorno da JDPI</strong> para prosseguir.</div>
                 <div class="timeline" style="margin-top:8px">
                   <strong>Linha do Tempo</strong>
                   <div class="events">
@@ -105,9 +107,10 @@
                 </div>
               </div>
               <div class="sol-box">
-                <h3>Rate Limit  </h3>
+                <h3>Rate Limit </h3>
                 <div class="progress"><div class="fill" style="width:10%"></div></div>
                 <div class="progress-label">10% concluído</div>
+                <div class="imp-alert">🚫 Impedimento (10/09): <strong>aguardando retorno da JDPI</strong> para retomar a solicitação.</div>
                 <div class="timeline" style="margin-top:8px">
                   <strong>Linha do Tempo</strong>
                   <div class="events">
@@ -118,7 +121,7 @@
                 </div>
               </div>
               <div class="sol-box">
-                <h3>Autoatendimento MED </h3>
+                <h3>Autoatendimento MED</h3>
                 <div class="progress"><div class="fill" style="width:70%"></div></div>
                 <div class="progress-label">70% concluído</div>
                 <div class="timeline" style="margin-top:8px">
@@ -139,6 +142,7 @@
               • 10/09 — BASA confirmou Hash como obrigatório; escopo reaberto.<br>
               • 10/09 — Casos de uso JDPI Pix Automático finalizados.<br>
               • 04/09 — APN finalizado (Pix Automático).<br>
+              • 30/08 — Inclusão de demandas urgentes (Catálogo JDNPC, Mensagens SPB, Catálogo Pix 5.2.0, Pix Automático 1.1.0).
             </div>
           </section>
 
@@ -160,11 +164,11 @@
           <section class="card">
             <strong>Detalhes Rápidos</strong>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--muted)">
-              <div><small>Atualizações Catálogos JDPI Pix v5.2.1 e Pix Automático v1.1.1 :</small><br><strong>10%</strong></div>
+              <div><small>Pix Automático:</small><br><strong>10%</strong></div>
               <div><small>Rate Limit:</small><br><strong>10%</strong></div>
               <div><small>Autoatendimento MED:</small><br><strong>70%</strong></div>
               <div><small>Última alteração de escopo:</small><br><strong>10/09 — Hash obrigatório</strong></div>
-              <div><small>Dependências:</small><br><strong>JDPI, BASA, JDNPC, SPB</strong></div>
+              <div><small>Dependências:</small><br><strong>JDPI, BASA, JDNPC</strong></div>
             </div>
           </section>
 
