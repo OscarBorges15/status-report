@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>One-Page Status Report — Template</title>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#1f6feb; --muted:#6b7280; --ok:#10b981; --warn:#f59e0b; --crit:#ef4444; --glass: rgba(31,111,235,0.06);
+      --radius:12px; --pad:18px; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef3fb);color:#0f172a}
+    .wrap{max-width:980px;margin:28px auto;padding:18px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 22px rgba(12,26,75,0.06);padding:var(--pad);}
+
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .project{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h1{font-size:18px;margin:0}
+    .meta{font-size:13px;color:var(--muted)}
+
+    .status-chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;font-weight:600}
+    .chip-green{background:rgba(16,185,129,0.12);color:var(--ok)}
+    .chip-yellow{background:rgba(245,158,11,0.08);color:var(--warn)}
+    .chip-red{background:rgba(239,68,68,0.08);color:var(--crit)}
+
+    /* layout grid */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
+    .left{display:flex;flex-direction:column;gap:12px}
+    .right{display:flex;flex-direction:column;gap:12px}
+
+    /* timeline */
+    .timeline.card{padding:14px}
+    .bar{height:14px;background:#e6eefc;border-radius:999px;position:relative;overflow:hidden}
+    .bar .fill{height:100%;background:linear-gradient(90deg,var(--accent),#7dd3fc);width:40%;border-radius:999px}
+    .milestones{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+
+    /* priorities */
+    .priorities{display:flex;gap:10px}
+    .prio{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(31,111,235,0.06),transparent);border:1px solid rgba(31,111,235,0.06)}
+    .prio h3{margin:0;font-size:13px}
+    .prio p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+
+    /* impediments */
+    .impediments{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,241,242,0.6),transparent);border:1px solid rgba(239,68,68,0.08)}
+    .imp-list{display:flex;flex-direction:column;gap:8px}
+    .imp{display:flex;gap:10px;align-items:flex-start}
+    .imp .tag{font-weight:700;font-size:12px;color:var(--crit);min-width:84px}
+    .imp p{margin:0;color:var(--muted);font-size:13px}
+
+    /* next steps */
+    .next{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(16,185,129,0.06),transparent);border:1px solid rgba(16,185,129,0.06)}
+    .task{display:flex;gap:10px;align-items:center}
+    .task input[type=checkbox]{width:18px;height:18px}
+    .task label{font-size:13px;color:var(--muted)}
+
+    /* summary */
+    .summary{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(99,102,241,0.04),transparent);border:1px solid rgba(99,102,241,0.04)}
+    .summary p{margin:0;color:var(--muted)}
+
+    /* footer actions */
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(31,111,235,0.12)}
+
+    /* editable placeholders */
+    [data-editable]{outline:none}
+    input[type=text], input[type=date], textarea{padding:8px;border-radius:8px;border:1px solid #e6eefc;font-size:13px}
+
+    /* responsive */
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.right{order:2}.left{order:1}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="project">
+          <div class="logo" title="Projeto">SR</div>
+          <div>
+            <h1 contenteditable data-editable id="projectName">Projeto: [Nome do Projeto]</h1>
+            <div class="meta">Responsável: <span contenteditable data-editable id="owner">[Nome / Squad]</span> • Período: <span contenteditable data-editable id="period">01/09/2025 → 30/09/2025</span></div>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div id="statusChip" class="status-chip chip-green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="opacity:0.9"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0"></circle></svg>
+            <span id="statusText">Em andamento</span>
+          </div>
+          <div class="meta" style="margin-top:6px">Última atualização: <span contenteditable data-editable id="lastUpdate">10/09/2025</span></div>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="left">
+          <section class="timeline card">
+            <strong style="display:block;margin-bottom:8px">Linha do Tempo</strong>
+            <div class="bar" aria-hidden>
+              <div class="fill" id="progressFill" style="width:40%"></div>
+            </div>
+            <div class="milestones">
+              <div><small>Início<br><strong contenteditable data-editable id="startDate">01/09</strong></div>
+              <div><small>Fase 1<br><strong contenteditable data-editable id="phase1">Desenvolvimento</strong></div>
+              <div><small>Fase 2<br><strong contenteditable data-editable id="phase2">Testes</strong></div>
+              <div><small>Entrega<br><strong contenteditable data-editable id="endDate">30/09</strong></div>
+            </div>
+          </section>
+
+          <section class="card priorities">
+            <strong style="display:block;margin-bottom:8px">Prioridades</strong>
+            <div class="priorities">
+              <div class="prio">
+                <h3>P1 — <span contenteditable data-editable id="p1Title">Corrigir integração SPB</span></h3>
+                <p contenteditable data-editable id="p1Desc">Descrição curta do que deve ser entregue, responsável e data.</p>
+              </div>
+              <div class="prio" style="background:linear-gradient(180deg,rgba(99,102,241,0.04),transparent);border:1px solid rgba(99,102,241,0.04)">
+                <h3>P2 — <span contenteditable data-editable id="p2Title">Ajuste catálogo</span></h3>
+                <p contenteditable data-editable id="p2Desc">Breve descrição e impacto.</p>
+              </div>
+              <div class="prio" style="background:linear-gradient(180deg,rgba(16,185,129,0.02),transparent);border:1px solid rgba(16,185,129,0.02)">
+                <h3>P3 — <span contenteditable data-editable id="p3Title">Validação QA</span></h3>
+                <p contenteditable data-editable id="p3Desc">Breve descrição e data estimada.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card impediments">
+            <strong style="display:block;margin-bottom:8px">🚧 Impedimentos</strong>
+            <div class="imp-list">
+              <div class="imp">
+                <div class="tag">Interno</div>
+                <p contenteditable data-editable id="impInternal">Falta recurso de BLK para realizar testes de integração — impacto: atraso de 2 semanas.</p>
+              </div>
+              <div class="imp">
+                <div class="tag">Externo</div>
+                <p contenteditable data-editable id="impExternal">Dependência com JDNPC: documentação incompleta (solicitado em 28/08) — pendente resposta.</p>
+              </div>
+              <div class="imp">
+                <div class="tag">Risco</div>
+                <p contenteditable data-editable id="impRisk">Se não resolvido, risco operacional: baixa de títulos PJ falhará e clientes ficarão com pagamentos pendentes.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card next">
+            <strong style="display:block;margin-bottom:8px">🔄 Próximos Passos</strong>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label class="task"><input type="checkbox" id="t1"><label for="t1"> <span contenteditable data-editable id="t1Text">Concluir correção CPF/CNPJ – 12/09/2025</span></label></label>
+              <label class="task"><input type="checkbox" id="t2"><label for="t2"> <span contenteditable data-editable id="t2Text">Liberar massa para CNAB – 15/09/2025</span></label></label>
+              <label class="task"><input type="checkbox" id="t3"><label for="t3"> <span contenteditable data-editable id="t3Text">Reunião com JD para documentação – 11/09/2025</span></label></label>
+            </div>
+          </section>
+        </div>
+
+        <aside class="right">
+          <section class="card summary">
+            <strong style="display:block;margin-bottom:8px">📌 Resumo Executivo</strong>
+            <p contenteditable data-editable id="summaryText">Estamos avançando conforme o planejado, porém há dependências externas com a JDNPC que podem impactar a entrega em 30/09. Solicitamos apoio da área X para priorizar a documentação.</p>
+          </section>
+
+          <section class="card">
+            <strong style="display:block;margin-bottom:8px">Detalhes Rápidos</strong>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted);display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div><small>Andamento:</small><br><strong id="percentComplete">40%</strong></div>
+              <div><small>Homologação:</small><br><strong id="hmg">8,24%</strong></div>
+              <div><small>Última alteração de escopo:</small><br><strong contenteditable data-editable id="scopeChange">Alteração campos CPF/CNPJ – 09/09/2025</strong></div>
+              <div><small>Dependências:</small><br><strong contenteditable data-editable id="deps">JDNPC, SPB</strong></div>
+            </div>
+          </section>
+
+          <section class="card">
+            <strong style="display:block;margin-bottom:8px">Ações</strong>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+              <div class="actions">
+                <button class="btn" id="saveBtn">Salvar (Local)</button>
+                <button class="btn ghost" id="exportBtn">Exportar HTML</button>
+                <button class="btn ghost" id="printBtn">Imprimir / PDF</button>
+              </div>
+              <small style="color:var(--muted)">Dica: use "Exportar HTML" para gerar um arquivo pronto para hospedar (ex.: GitHub Pages).</small>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // small helpers
+  function qs(id){return document.getElementById(id)}
+  function setStatus(status){ const chip=qs('statusChip'); const txt=qs('statusText'); chip.classList.remove('chip-green','chip-yellow','chip-red'); if(status==='OK'||status==='Em andamento'){chip.classList.add('chip-green');txt.textContent='Em andamento'} else if(status==='Atenção'){chip.classList.add('chip-yellow');txt.textContent='Atenção'} else {chip.classList.add('chip-red');txt.textContent='Crítico'} }
+
+  // save to localStorage
+  qs('saveBtn').addEventListener('click', ()=>{
+    const nodes = document.querySelectorAll('[data-editable]');
+    const data = {};
+    nodes.forEach(n=> data[n.id]=n.innerText);
+    // also include checkboxes
+    data.t1 = qs('t1').checked; data.t2=qs('t2').checked; data.t3=qs('t3').checked;
+    localStorage.setItem('onePageStatusData', JSON.stringify(data));
+    alert('Salvo localmente no navegador (localStorage).');
+  });
+
+  // load saved
+  window.addEventListener('load', ()=>{
+    const raw = localStorage.getItem('onePageStatusData');
+    if(!raw) return;
+    try{
+      const data = JSON.parse(raw);
+      Object.keys(data).forEach(k=>{
+        if(k==='t1' || k==='t2' || k==='t3'){ qs(k).checked = data[k]; return }
+        const el = qs(k); if(el) el.innerText = data[k];
+      });
+      // adjust fill width if percentComplete exists
+      const pct = parseInt((qs('percentComplete')?.innerText||'').replace('%','')) || 40; qs('progressFill').style.width = (pct>100?100:pct)+'%';
+    }catch(e){console.warn(e)}
+  });
+
+  // export full HTML
+  qs('exportBtn').addEventListener('click', ()=>{
+    const doc = '<!doctype html>' + document.documentElement.outerHTML;
+    const blob = new Blob([doc], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download = 'status-onepage.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+
+  // print
+  qs('printBtn').addEventListener('click', ()=>{ window.print(); });
+
+  // small UI: allow status switching by clicking chip
+  qs('statusChip').addEventListener('click', ()=>{
+    const current = qs('statusText').innerText;
+    if(current==='Em andamento') setStatus('Atenção');
+    else if(current==='Atenção') setStatus('Crítico');
+    else setStatus('Em andamento');
+  });
+
+  // auto-update percent -> progress bar when percent edited
+  const pctEl = qs('percentComplete'); pctEl.addEventListener('input', ()=>{ const v = parseInt(pctEl.innerText)||0; qs('progressFill').style.width = (v>100?100:v)+'%'; });
+</script>
+</body>
+</html>
