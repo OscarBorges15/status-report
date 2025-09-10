@@ -28,8 +28,8 @@
     h1{font-size:18px;margin:0;color:white}
     .meta{font-size:13px;color:#cbd5e1}
 
-    .status-container{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;width:100%;max-width:200px}
-    .status-chip{display:inline-flex;gap:8px;align-items:center;justify-content:center;align-self:flex-end;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer;background:var(--primary);color:var(--secondary);text-align:center;font-size:14px;min-height:44px}
+    .status-container{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+    .status-chip{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer;background:var(--primary);color:var(--secondary);text-align:center;font-size:14px;min-height:44px;white-space:nowrap;line-height:1.2}
 
     .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
     .left{display:flex;flex-direction:column;gap:12px}
@@ -64,8 +64,8 @@
     @media (max-width:900px){
       .grid{grid-template-columns:1fr}
       .right{order:2}.left{order:1}
-      .status-container{align-items:flex-start;max-width:100%;width:100%}
-      .status-chip{align-self:flex-start;font-size:16px;padding:10px 18px;min-height:48px}
+      .status-container{margin-left:auto;align-items:flex-end;width:100%}
+      .status-chip{align-self:flex-end;font-size:16px;padding:10px 18px;min-height:48px;white-space:nowrap}
     }
   </style>
 </head>
@@ -77,6 +77,7 @@
           <div class="logo">PB</div>
           <div>
             <h1>Projeto: PIX BASA</h1>
+            <div class="meta">Responsável: <span contenteditable>[Squad/Responsável]</span> • Período: <span contenteditable>25/08/2025 → 30/09/2025</span></div>
           </div>
         </div>
         <div class="status-container">
@@ -92,6 +93,7 @@
             <div class="solicitacoes">
               <div class="sol-box">
                 <h3>JDPI · Pix Automático (API v5.2.1 / v1.1.1)</h3>
+                <p>Recebida em 25/08. Entendimento iniciado 01/09. APN 04/09. Casos de Uso 10/09. Escopo alterado em 10/09: Hash obrigatório.</p>
                 <div class="progress"><div class="fill" style="width:10%"></div></div>
                 <div class="progress-label">10% concluído</div>
                 <div class="imp-alert">🚫 Impedimento (10/09): dúvidas sobre Hash enviadas — <strong>aguardando retorno da JDPI</strong> para prosseguir.</div>
@@ -107,7 +109,8 @@
                 </div>
               </div>
               <div class="sol-box">
-                <h3>Rate Limit </h3>
+                <h3>Rate Limit (PO Edglayson)</h3>
+                <p>Prioridade solicitada em 09/09. Entendimento iniciado 10/09. Dúvidas enviadas ao time JDPI.</p>
                 <div class="progress"><div class="fill" style="width:10%"></div></div>
                 <div class="progress-label">10% concluído</div>
                 <div class="imp-alert">🚫 Impedimento (10/09): <strong>aguardando retorno da JDPI</strong> para retomar a solicitação.</div>
@@ -122,6 +125,7 @@
               </div>
               <div class="sol-box">
                 <h3>Autoatendimento MED</h3>
+                <p>Desenvolvimento iniciado em 03/07. Prazo legal 30/09. Pausas entre 12/08–30/08 para urgências (Catálogo 1.0.9 JDNPC, Mensagens SPB, Catálogo Pix 5.2.0, Pix Automático 1.1.0).</p>
                 <div class="progress"><div class="fill" style="width:70%"></div></div>
                 <div class="progress-label">70% concluído</div>
                 <div class="timeline" style="margin-top:8px">
