@@ -23,16 +23,14 @@
     .wrap{max-width:980px;margin:28px auto;padding:18px}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 22px rgba(12,26,75,0.06);padding:var(--pad)}
 
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:8px;background:var(--secondary);color:white;border-radius:var(--radius);padding:12px 16px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:8px;background:var(--secondary);color:white;border-radius:var(--radius);padding:12px 16px;margin-bottom:20px}
     .project{display:flex;gap:14px;align-items:center;flex:1 1 auto;min-width:0}
     .logo{width:56px;height:56px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:var(--secondary);font-weight:700;font-size:18px}
     h1{font-size:18px;margin:0;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .status-container{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px;white-space:nowrap;flex:0 0 auto;max-width:100%}
     .status-chip{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer;background:var(--primary);color:var(--secondary);text-align:center;font-size:14px;min-height:44px;line-height:1.2;white-space:nowrap;max-width:100%;min-width:0}
 
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
-    .left{display:flex;flex-direction:column;gap:12px}
-    .right{display:flex;flex-direction:column;gap:12px}
+    .content{display:flex;flex-direction:column;gap:16px}
 
     .timeline strong{color:var(--secondary)}
     .timeline .events{display:flex;flex-direction:column;gap:6px;margin-top:10px}
@@ -62,9 +60,10 @@
     .progress-label{font-size:12px;color:var(--muted);margin-top:2px}
     .imp-alert{margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#b91c1c;font-size:13px;font-weight:600}
 
+    .actions{display:flex;justify-content:center;margin-top:24px}
+    .btn{background:var(--primary);color:var(--secondary);padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;min-height:44px}
+
     @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .right{order:2}.left{order:1}
       header{padding:10px 12px}
       .status-container{margin-left:auto;align-items:flex-end;width:auto;white-space:nowrap}
       .status-chip{align-self:flex-end;font-size:clamp(12px,4vw,15px);padding:8px 12px;min-height:44px;white-space:nowrap;max-width:100%}
@@ -128,117 +127,106 @@
         </div>
       </header>
 
-      <div class="grid">
-        <div class="left">
-          <section class="card">
-            <strong style="color:var(--secondary)">Solicitações Ativas</strong>
-            <div class="solicitacoes">
-              <div class="sol-box">
-                <h3>JDPI · Pix Automático (API v5.2.1 / v1.1.1)</h3>
-                <p>Recebida em 25/08. Entendimento iniciado 01/09. APN 04/09. Casos de Uso 10/09. Escopo alterado em 10/09: Hash obrigatório.</p>
-                <div class="progress"><div class="fill" style="width:10%"></div></div>
-                <div class="progress-label">10% concluído</div>
-                <div class="imp-alert">🚫 Impedimento (10/09): dúvidas sobre Hash enviadas — <strong>aguardando retorno da JDPI</strong> para prosseguir.</div>
-                <div class="timeline" style="margin-top:8px">
-                  <strong>Linha do Tempo</strong>
-                  <div class="events">
-                    <div class="event"><div class="dot"></div><div>25/08 — Solicitação recebida</div></div>
-                    <div class="event"><div class="dot"></div><div>01/09 — Início do entendimento técnico</div></div>
-                    <div class="event"><div class="dot"></div><div>04/09 — APN finalizado</div></div>
-                    <div class="event"><div class="dot"></div><div>10/09 — Casos de uso finalizados</div></div>
-                    <div class="event"><div class="dot"></div><div>10/09 — Escopo alterado: Hash obrigatório</div></div>
-                    <div class="event"><div class="dot"></div><div>10/09 — duvidas enviadas ao PO Edgleyson</div></div>
-                    <div class="event"><div class="dot"></div><div>11/09 — Retorno das duvidas, em analise pelo Saulo e Gabriele</div></div>
-
-                  </div>
+      <div class="content">
+        <section class="card">
+          <strong style="color:var(--secondary)">Solicitações Ativas</strong>
+          <div class="solicitacoes">
+            <div class="sol-box">
+              <h3>JDPI · Pix Automático (API v5.2.1 / v1.1.1)</h3>
+              <p>Recebida em 25/08. Entendimento iniciado 01/09. APN 04/09. Casos de Uso 10/09. Escopo alterado em 10/09: Hash obrigatório.</p>
+              <div class="progress"><div class="fill" style="width:10%"></div></div>
+              <div class="progress-label">10% concluído</div>
+              <div class="imp-alert">🚫 Impedimento (10/09): dúvidas sobre Hash enviadas — <strong>aguardando retorno da JDPI</strong> para prosseguir.</div>
+              <div class="timeline" style="margin-top:8px">
+                <strong>Linha do Tempo</strong>
+                <div class="events">
+                  <div class="event"><div class="dot"></div><div>25/08 — Solicitação recebida</div></div>
+                  <div class="event"><div class="dot"></div><div>01/09 — Início do entendimento técnico</div></div>
+                  <div class="event"><div class="dot"></div><div>04/09 — APN finalizado</div></div>
+                  <div class="event"><div class="dot"></div><div>10/09 — Casos de uso finalizados</div></div>
+                  <div class="event"><div class="dot"></div><div>10/09 — Escopo alterado: Hash obrigatório</div></div>
                 </div>
-                <div class="phase-timeline">
-                  <div class="phase current">Requisitos</div>
-                  <div class="phase pending">Desenvolvimento</div>
-                  <div class="phase pending">Teste</div>
-                  <div class="phase pending">Homologação</div>
-                  <div class="phase pending">Produção</div>
-                </div>
-                <div class="days-remaining" data-legal></div>
               </div>
-              <div class="sol-box">
-                <h3>Rate Limit (PO Edglayson)</h3>
-                <p>Prioridade solicitada em 09/09. Entendimento iniciado 10/09. Dúvidas enviadas ao time JDPI.</p>
-                <div class="progress"><div class="fill" style="width:10%"></div></div>
-                <div class="progress-label">10% concluído</div>
-                <div class="imp-alert">🚫 Impedimento (10/09): <strong>aguardando retorno da JDPI</strong> para retomar a solicitação.</div>
-                <div class="timeline" style="margin-top:8px">
-                  <strong>Linha do Tempo</strong>
-                  <div class="events">
-                    <div class="event"><div class="dot"></div><div>09/09 — PO solicitou priorização</div></div>
-                    <div class="event"><div class="dot"></div><div>10/09 — Início do entendimento</div></div>
-                    <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div>
-                    <div class="event"><div class="dot"></div><div>11/09 - Retorno das Duvidas enviadas, retorno não foi suficiente, BASA vai marcar uma reunião com a JDPI</div></div>
-                  </div>
-                </div>
-                <div class="phase-timeline">
-                  <div class="phase current">Requisitos</div>
-                  <div class="phase pending">Desenvolvimento</div>
-                  <div class="phase pending">Teste</div>
-                  <div class="phase pending">Homologação</div>
-                  <div class="phase pending">Produção</div>
-                </div>
-                <div class="days-remaining" data-legal></div>
+              <div class="phase-timeline">
+                <div class="phase current">Requisitos</div>
+                <div class="phase pending">Desenvolvimento</div>
+                <div class="phase pending">Teste</div>
+                <div class="phase pending">Homologação</div>
+                <div class="phase pending">Produção</div>
               </div>
-              <div class="sol-box">
-                <h3>Autoatendimento MED</h3>
-                <p>Desenvolvimento iniciado em 03/07. Prazo legal 30/09. Pausas entre 12/08–30/08 para urgências.</p>
-                <div class="progress"><div class="fill" style="width:70%"></div></div>
-                <div class="progress-label">70% concluído</div>
-                <div class="timeline" style="margin-top:8px">
-                  <strong>Linha do Tempo</strong>
-                  <div class="events">
-                    <div class="event"><div class="dot"></div><div>03/07 — Início do desenvolvimento</div></div>
-                    <div class="event"><div class="dot"></div><div>12/08–30/08 — Pausa para demandas urgentes</div></div>
-                    <div class="event"><div class="dot"></div><div>30/09 — Prazo legal de entrega</div></div>
-                  </div>
+              <div class="days-remaining" data-legal></div>
+            </div>
+            <div class="sol-box">
+              <h3>Rate Limit (PO Edglayson)</h3>
+              <p>Prioridade solicitada em 09/09. Entendimento iniciado 10/09. Dúvidas enviadas ao time JDPI.</p>
+              <div class="progress"><div class="fill" style="width:10%"></div></div>
+              <div class="progress-label">10% concluído</div>
+              <div class="imp-alert">🚫 Impedimento (10/09): <strong>aguardando retorno da JDPI</strong> para retomar a solicitação.</div>
+              <div class="timeline" style="margin-top:8px">
+                <strong>Linha do Tempo</strong>
+                <div class="events">
+                  <div class="event"><div class="dot"></div><div>09/09 — PO solicitou priorização</div></div>
+                  <div class="event"><div class="dot"></div><div>10/09 — Início do entendimento</div></div>
+                  <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div>
                 </div>
-                <div class="phase-timeline">
-                  <div class="phase done">Requisitos</div>
-                  <div class="phase current">Desenvolvimento</div>
-                  <div class="phase current">Teste</div>
-                  <div class="phase pending">Homologação</div>
-                  <div class="phase pending">Produção</div>
-                </div>
-                <div class="days-remaining" data-legal="30/09/2025"></div>
               </div>
+              <div class="phase-timeline">
+                <div class="phase current">Requisitos</div>
+                <div class="phase pending">Desenvolvimento</div>
+                <div class="phase pending">Teste</div>
+                <div class="phase pending">Homologação</div>
+                <div class="phase pending">Produção</div>
+              </div>
+              <div class="days-remaining" data-legal></div>
             </div>
-          </section>
+            <div class="sol-box">
+              <h3>Autoatendimento MED</h3>
+              <p>Desenvolvimento iniciado em 03/07. Prazo legal 30/09. Pausas entre 12/08–30/08 para urgências.</p>
+              <div class="progress"><div class="fill" style="width:70%"></div></div>
+              <div class="progress-label">70% concluído</div>
+              <div class="timeline" style="margin-top:8px">
+                <strong>Linha do Tempo</strong>
+                <div class="events">
+                  <div class="event"><div class="dot"></div><div>03/07 — Início do desenvolvimento</div></div>
+                  <div class="event"><div class="dot"></div><div>12/08–30/08 — Pausa para demandas urgentes</div></div>
+                  <div class="event"><div class="dot"></div><div>30/09 — Prazo legal de entrega</div></div>
+                </div>
+              </div>
+              <div class="phase-timeline">
+                <div class="phase done">Requisitos</div>
+                <div class="phase current">Desenvolvimento</div>
+                <div class="phase current">Teste</div>
+                <div class="phase pending">Homologação</div>
+                <div class="phase pending">Produção</div>
+              </div>
+              <div class="days-remaining" data-legal="30/09/2025"></div>
+            </div>
+          </div>
+        </section>
 
-          <section class="card">
-            <strong style="color:var(--secondary)">🧾 Registro de Mudanças</strong>
-            <div style="font-size:13px;color:var(--muted)" contenteditable>
-              • 10/09 — BASA confirmou Hash como obrigatório; escopo reaberto.<br>
-              • 10/09 — Casos de uso JDPI Pix Automático finalizados.<br>
-              • 04/09 — APN finalizado (Pix Automático).<br>
-              • 30/08 — Inclusão de demandas urgentes (Catálogo JDNPC, Mensagens SPB, Catálogo Pix 5.2.0, Pix Automático 1.1.0).
-            </div>
-          </section>
+        <section class="card">
+          <strong style="color:var(--secondary)">🧾 Registro de Mudanças</strong>
+          <div style="font-size:13px;color:var(--muted)" contenteditable>
+            • 10/09 — BASA confirmou Hash como obrigatório; escopo reaberto.<br>
+            • 10/09 — Casos de uso JDPI Pix Automático finalizados.<br>
+            • 04/09 — APN finalizado (Pix Automático).<br>
+            • 30/08 — Inclusão de demandas urgentes (Catálogo JDNPC, Mensagens SPB, Catálogo Pix 5.2.0, Pix Automático 1.1.0).
+          </div>
+        </section>
 
-          <section class="card">
-            <strong style="color:var(--secondary)">🧭 Backlog (Miro)</strong>
-            <p class="meta">Visualização do board no Miro com as solicitações.</p>
-            <div style="aspect-ratio:16/9;border:1px dashed var(--support1);border-radius:8px;overflow:hidden;background:rgba(12,50,36,0.05)">
-              <iframe src="https://miro.com/app/board/uXjVIwZBdss=/" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </section>
+        <section class="card">
+          <strong style="color:var(--secondary)">🧭 Backlog (Miro)</strong>
+          <p class="meta">Visualização do board no Miro com as solicitações.</p>
+          <div style="aspect-ratio:16/9;border:1px dashed var(--support1);border-radius:8px;overflow:hidden;background:rgba(12,50,36,0.05)">
+            <iframe src="https://miro.com/app/board/uXjVIwZBdss=/" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
         </div>
-
-        <aside class="right">
-          <section class="card summary">
-            <strong>📌 Resumo Executivo</strong>
-            <p>O projeto avança em três frentes: (1) JDPI Pix Automático em requisitos (~10%); (2) Rate Limit em requisitos (~10%); (3) Autoatendimento MED em desenvolvimento/testes (~70%). Impedimentos relacionados ao Hash podem afetar o cronograma.</p>
-          </section>
-
-          
-
-          <section class="card">
-            <strong>Ações</strong>
-            <div class="actions">
-              <button class="btn" onclick="window.print()">Imprimir / PDF</button>
-            </
+      </div>
+    </div>
+  </div>
+</body>
+</html>
