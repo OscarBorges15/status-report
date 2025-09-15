@@ -67,13 +67,17 @@
     .progress-label{font-size:12px;color:var(--muted);margin-top:2px}
     .imp-alert{margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:#b91c1c;font-size:13px;font-weight:600}
 
-    .actions{display:flex;justify-content:center;margin-top:24px}
+    .actions{display:flex;justify-content:center;margin-top:28px}
     .btn{background:var(--primary);color:var(--secondary);padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;min-height:44px}
 
     @media (max-width:900px){
       header{padding:10px 12px}
       .status-container{margin-left:auto;align-items:flex-end;width:auto;white-space:nowrap}
       .status-chip{align-self:flex-end;font-size:clamp(12px,4vw,15px);padding:8px 12px;min-height:44px;white-space:nowrap;max-width:100%}
+    }
+    /* Garante que o botão apareça também na impressão ao final da página */
+    @media print{
+      .actions{break-inside:avoid;page-break-inside:avoid}
     }
   </style>
   <script>
@@ -243,4 +247,16 @@
           <strong style="color:var(--secondary)">🧭 Backlog (Miro)</strong>
           <p class="meta">Visualização do board no Miro com as solicitações.</p>
           <div style="aspect-ratio:16/9;border:1px dashed var(--support1);border-radius:8px;overflow:hidden;background:rgba(12,50,36,0.05)">
-            <iframe src="https://miro.com/app/board/uXjVIwZBdss=/" style="width:100%;height:100%;
+            <iframe src="https://miro.com/app/board/uXjVIwZBdss=/" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
