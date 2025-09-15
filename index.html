@@ -43,6 +43,13 @@
     .current{background:var(--active);color:white}
     .pending{background:#d1d5db;color:#374151}
 
+    .phase-legend{display:flex;gap:12px;font-size:12px;margin-top:16px;color:var(--muted)}
+    .phase-legend span{display:inline-flex;align-items:center;gap:4px}
+    .phase-legend .box{width:14px;height:14px;border-radius:4px;display:inline-block}
+    .legend-done{background:var(--support1)}
+    .legend-current{background:var(--active)}
+    .legend-pending{background:#d1d5db}
+
     .days-remaining{margin-top:10px;font-size:13px;font-weight:700;padding:8px 12px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:6px;max-width:fit-content}
     .days-green{background:#dcfce7;color:#166534;border:1px solid #16a34a}
     .days-yellow{background:#fef9c3;color:#854d0e;border:1px solid #ca8a04}
@@ -145,8 +152,6 @@
                   <div class="event"><div class="dot"></div><div>04/09 — APN finalizado</div></div>
                   <div class="event"><div class="dot"></div><div>10/09 — Casos de uso finalizados</div></div>
                   <div class="event"><div class="dot"></div><div>10/09 — Escopo alterado: Hash obrigatório</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — duvidas enviadas ao PO Edgleyson</div></div>
-                  <div class="event"><div class="dot"></div><div>11/09 — Retorno das duvidas, em analise pelo Saulo e Gabriele</div></div>
                 </div>
               </div>
               <div class="phase-timeline">
@@ -155,6 +160,11 @@
                 <div class="phase pending">Teste</div>
                 <div class="phase pending">Homologação</div>
                 <div class="phase pending">Produção</div>
+              </div>
+              <div class="phase-legend">
+                <span><span class="box legend-done"></span> Concluída</span>
+                <span><span class="box legend-current"></span> Em desenvolvimento</span>
+                <span><span class="box legend-pending"></span> Não iniciada</span>
               </div>
               <div class="days-remaining" data-legal></div>
             </div>
@@ -169,8 +179,7 @@
                 <div class="events">
                   <div class="event"><div class="dot"></div><div>09/09 — PO solicitou priorização</div></div>
                   <div class="event"><div class="dot"></div><div>10/09 — Início do entendimento</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div
-                  <div class="event"><div class="dot"></div><div>11/09 - Retorno das Duvidas enviadas, retorno não foi suficiente, BASA vai marcar uma reunião com a JDPI</div></div>
+                  <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div>
                 </div>
               </div>
               <div class="phase-timeline">
@@ -179,6 +188,11 @@
                 <div class="phase pending">Teste</div>
                 <div class="phase pending">Homologação</div>
                 <div class="phase pending">Produção</div>
+              </div>
+              <div class="phase-legend">
+                <span><span class="box legend-done"></span> Concluída</span>
+                <span><span class="box legend-current"></span> Em desenvolvimento</span>
+                <span><span class="box legend-pending"></span> Não iniciada</span>
               </div>
               <div class="days-remaining" data-legal></div>
             </div>
@@ -201,6 +215,11 @@
                 <div class="phase current">Teste</div>
                 <div class="phase pending">Homologação</div>
                 <div class="phase pending">Produção</div>
+              </div>
+              <div class="phase-legend">
+                <span><span class="box legend-done"></span> Concluída</span>
+                <span><span class="box legend-current"></span> Em desenvolvimento</span>
+                <span><span class="box legend-pending"></span> Não iniciada</span>
               </div>
               <div class="days-remaining" data-legal="30/09/2025"></div>
             </div>
@@ -226,10 +245,4 @@
         </section>
 
         <div class="actions">
-          <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+          <button class="btn" onclick
