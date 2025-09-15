@@ -60,7 +60,7 @@
 
     .solicitacoes{display:flex;flex-direction:column;gap:12px}
     .sol-box{padding:12px;border-radius:10px;border:1px solid var(--support1);background:linear-gradient(180deg,rgba(0,225,45,0.05),transparent)}
-    .sol-box h3{margin:0;font-size:14px;color:var(--secondary);display:flex;justify-content:space-between;align-items:center}
+    .sol-box h3{margin:0;font-size:14px;color:var(--secondary)}
     .sol-box p{margin:6px 0 6px;font-size:13px;color:var(--muted)}
     .progress{margin-top:6px;height:10px;background:#e6f5eb;border-radius:999px;overflow:hidden}
     .progress .fill{height:100%;background:var(--primary)}
@@ -71,13 +71,7 @@
     .btn{background:var(--primary);color:var(--secondary);padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;min-height:44px}
 
     @media (max-width:900px){
-      header{padding:10px 12px}
-      .status-container{margin-left:auto;align-items:flex-end;width:auto;white-space:nowrap}
-      .status-chip{align-self:flex-end;font-size:clamp(12px,4vw,15px);padding:8px 12px;min-height:44px;white-space:nowrap;max-width:100%}
-    }
-    /* Garante que o botão apareça também na impressão ao final da página */
-    @media print{
-      .actions{break-inside:avoid;page-break-inside:avoid}
+      .status-chip{font-size:clamp(12px,4vw,15px);padding:8px 12px;min-height:44px}
     }
   </style>
   <script>
@@ -134,7 +128,7 @@
         </div>
         <div class="status-container">
           <div id="statusChip" class="status-chip">🟢 <span id="statusText">Em andamento</span></div>
-          <div class="meta">Última atualização: <span contenteditable>10/09/2025</span></div>
+          <div class="meta">Última atualização: <span contenteditable>15/09/2025</span></div>
         </div>
       </header>
 
@@ -142,119 +136,120 @@
         <section class="card">
           <strong style="color:var(--secondary)">Solicitações Ativas</strong>
           <div class="solicitacoes">
-            <!-- Solicitação Pix Automático -->
+            <!-- Box 1: Pix Automático -->
             <div class="sol-box">
               <h3>JDPI · Pix Automático (API v5.2.1 / v1.1.1)</h3>
               <p>Recebida em 25/08. Entendimento iniciado 01/09. APN 04/09. Casos de Uso 10/09. Escopo alterado em 10/09: Hash obrigatório.</p>
               <div class="progress"><div class="fill" style="width:10%"></div></div>
               <div class="progress-label">10% concluído</div>
-              <div class="imp-alert">🚫 Impedimento (10/09): dúvidas sobre Hash enviadas — <strong>aguardando retorno da JDPI</strong> para prosseguir.</div>
-              <div class="timeline" style="margin-top:8px">
-                <strong>Linha do Tempo</strong>
-                <div class="events">
-                  <div class="event"><div class="dot"></div><div>25/08 — Solicitação recebida</div></div>
-                  <div class="event"><div class="dot"></div><div>01/09 — Início do entendimento técnico</div></div>
-                  <div class="event"><div class="dot"></div><div>04/09 — APN finalizado</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — Casos de uso finalizados</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — Escopo alterado: Hash obrigatório</div></div>
-                </div>
-              </div>
+              <div class="imp-alert">🚫 Impedimento (15/09): Aguardando retorno BASA e JDPI para dúvidas da assinatura (Hash).</div>
+              <div class="timeline"><strong>Linha do Tempo</strong><div class="events">
+                <div class="event"><div class="dot"></div><div>25/08 — Solicitação recebida</div></div>
+                <div class="event"><div class="dot"></div><div>01/09 — Início do entendimento técnico</div></div>
+                <div class="event"><div class="dot"></div><div>04/09 — APN finalizado</div></div>
+                <div class="event"><div class="dot"></div><div>10/09 — Casos de uso finalizados</div></div>
+                <div class="event"><div class="dot"></div><div>10/09 — Escopo alterado: Hash obrigatório</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Aguardando retorno BASA/JDPI sobre Hash</div></div>
+              </div></div>
               <div class="phase-timeline">
-                <div class="phase current">Requisitos</div>
-                <div class="phase pending">Desenvolvimento</div>
-                <div class="phase pending">Teste</div>
-                <div class="phase pending">Homologação</div>
-                <div class="phase pending">Produção</div>
+                <div class="phase current">Requisitos</div><div class="phase pending">Desenvolvimento</div><div class="phase pending">Teste</div><div class="phase pending">Homologação</div><div class="phase pending">Produção</div>
               </div>
-              <div class="phase-legend">
-                <span><span class="box legend-done"></span> Concluída</span>
-                <span><span class="box legend-current"></span> Em desenvolvimento</span>
-                <span><span class="box legend-pending"></span> Não iniciada</span>
-              </div>
+              <div class="phase-legend"><span><span class="box legend-done"></span> Concluída</span><span><span class="box legend-current"></span> Em desenvolvimento</span><span><span class="box legend-pending"></span> Não iniciada</span></div>
               <div class="days-remaining" data-legal></div>
             </div>
-            <!-- Solicitação Rate Limit -->
+            <!-- Box 2: Rate Limit -->
             <div class="sol-box">
-              <h3>Rate Limit (PO Edglayson)</h3>
+              <h3>Rate Limit</h3>
               <p>Prioridade solicitada em 09/09. Entendimento iniciado 10/09. Dúvidas enviadas ao time JDPI.</p>
               <div class="progress"><div class="fill" style="width:10%"></div></div>
               <div class="progress-label">10% concluído</div>
-              <div class="imp-alert">🚫 Impedimento (10/09): <strong>aguardando retorno da JDPI</strong> para retomar a solicitação.</div>
-              <div class="timeline" style="margin-top:8px">
-                <strong>Linha do Tempo</strong>
-                <div class="events">
-                  <div class="event"><div class="dot"></div><div>09/09 — PO solicitou priorização</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — Início do entendimento</div></div>
-                  <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div>
-                </div>
-              </div>
+              <div class="imp-alert">🚫 Impedimento (15/09): Aguardando retorno BASA/JD sobre monitoramento do rate limit (Manual DICT). BASA vai agendar reunião com JD.</div>
+              <div class="timeline"><strong>Linha do Tempo</strong><div class="events">
+                <div class="event"><div class="dot"></div><div>09/09 — PO solicitou priorização</div></div>
+                <div class="event"><div class="dot"></div><div>10/09 — Início do entendimento</div></div>
+                <div class="event"><div class="dot"></div><div>10/09 — Dúvidas enviadas à JDPI</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — APN e Casos de Uso finalizados (Bank Link)</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Aguardando retorno BASA/JD sobre monitoramento</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — BASA informou que agendará reunião com JD</div></div>
+              </div></div>
               <div class="phase-timeline">
-                <div class="phase current">Requisitos</div>
-                <div class="phase pending">Desenvolvimento</div>
-                <div class="phase pending">Teste</div>
-                <div class="phase pending">Homologação</div>
-                <div class="phase pending">Produção</div>
+                <div class="phase current">Requisitos</div><div class="phase pending">Desenvolvimento</div><div class="phase pending">Teste</div><div class="phase pending">Homologação</div><div class="phase pending">Produção</div>
               </div>
-              <div class="phase-legend">
-                <span><span class="box legend-done"></span> Concluída</span>
-                <span><span class="box legend-current"></span> Em desenvolvimento</span>
-                <span><span class="box legend-pending"></span> Não iniciada</span>
-              </div>
+              <div class="phase-legend"><span><span class="box legend-done"></span> Concluída</span><span><span class="box legend-current"></span> Em desenvolvimento</span><span><span class="box legend-pending"></span> Não iniciada</span></div>
               <div class="days-remaining" data-legal></div>
             </div>
-            <!-- Solicitação Autoatendimento MED -->
+            <!-- Box 3: Autoatendimento MED -->
             <div class="sol-box">
               <h3>Autoatendimento MED</h3>
               <p>Desenvolvimento iniciado em 03/07. Prazo legal 30/09. Pausas entre 12/08–30/08 para urgências.</p>
               <div class="progress"><div class="fill" style="width:70%"></div></div>
               <div class="progress-label">70% concluído</div>
-              <div class="timeline" style="margin-top:8px">
-                <strong>Linha do Tempo</strong>
-                <div class="events">
-                  <div class="event"><div class="dot"></div><div>03/07 — Início do desenvolvimento</div></div>
-                  <div class="event"><div class="dot"></div><div>12/08–30/08 — Pausa para demandas urgentes</div></div>
-                  <div class="event"><div class="dot"></div><div>30/09 — Prazo legal de entrega</div></div>
-                </div>
-              </div>
+              <div class="timeline"><strong>Linha do Tempo</strong><div class="events">
+                <div class="event"><div class="dot"></div><div>03/07 — Início do desenvolvimento</div></div>
+                <div class="event"><div class="dot"></div><div>12/08–30/08 — Pausa para demandas urgentes</div></div>
+                <div class="event"><div class="dot"></div><div>30/09 — Prazo legal de entrega</div></div>
+              </div></div>
               <div class="phase-timeline">
-                <div class="phase done">Requisitos</div>
-                <div class="phase current">Desenvolvimento</div>
-                <div class="phase current">Teste</div>
-                <div class="phase pending">Homologação</div>
-                <div class="phase pending">Produção</div>
+                <div class="phase done">Requisitos</div><div class="phase current">Desenvolvimento</div><div class="phase current">Teste</div><div class="phase pending">Homologação</div><div class="phase pending">Produção</div>
               </div>
-              <div class="phase-legend">
-                <span><span class="box legend-done"></span> Concluída</span>
-                <span><span class="box legend-current"></span> Em desenvolvimento</span>
-                <span><span class="box legend-pending"></span> Não iniciada</span>
-              </div>
+              <div class="phase-legend"><span><span class="box legend-done"></span> Concluída</span><span><span class="box legend-current"></span> Em desenvolvimento</span><span><span class="box legend-pending"></span> Não iniciada</span></div>
               <div class="days-remaining" data-legal="30/09/2025"></div>
             </div>
+            <!-- Box 4: Tarifa Pix -->
+            <div class="sol-box">
+              <h3>Tarifa Pix — Processamento de Agendamento</h3>
+              <p>Solicitação em andamento. Aguardando retorno BASA para seguir com APN e Casos de Uso.</p>
+              <div class="progress"><div class="fill" style="width:5%"></div></div>
+              <div class="progress-label">5% concluído</div>
+              <div class="imp-alert">🚫 Impedimento (15/09): Aguardando retorno BASA para seguir com APN e Casos de Uso.</div>
+              <div class="timeline"><strong>Linha do Tempo</strong><div class="events">
+                <div class="event"><div class="dot"></div><div>12/09 — Dúvidas enviadas por e-mail e Teams</div></div>
+                <div class="event"><div class="dot"></div><div>12/09 — Fluxos criados por Benedito e enviados ao Edgleyson</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Solicitei confirmação de entendimento ao BASA</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Aguardando retorno BASA</div></div>
+              </div></div>
+              <div class="phase-timeline">
+                <div class="phase current">Requisitos</div><div class="phase pending">Desenvolvimento</div><div class="phase pending">Teste</div><div class="phase pending">Homologação</div><div class="phase pending">Produção</div>
+              </div>
+              <div class="phase-legend"><span><span class="box legend-done"></span> Concluída</span><span><span class="box legend-current"></span> Em desenvolvimento</span><span><span class="box legend-pending"></span> Não iniciada</span></div>
+              <div class="days-remaining" data-legal></div>
+            </div>
+            <!-- Box 5: IN653/IN654/CADOC 1201 -->
+            <div class="sol-box">
+              <h3>IN653, IN654 e CADOC 1201</h3>
+              <p>Recebida em 04/09. Documentação publicada em 12/09 pelo Bacen. Aguardando retorno do BASA desde 15/09 para seguir com APN e Casos de Uso.</p>
+              <div class="progress"><div class="fill" style="width:5%"></div></div>
+              <div class="progress-label">5% concluído</div>
+              <div class="imp-alert">🚫 Impedimento (15/09): Aguardando retorno BASA para seguir com APN e Casos de Uso.</div>
+              <div class="timeline"><strong>Linha do Tempo</strong><div class="events">
+                <div class="event"><div class="dot"></div><div>04/09 — Solicitação recebida (pendente documentação)</div></div>
+                <div class="event"><div class="dot"></div><div>12/09 — Bacen publicou documentação</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Dúvidas enviadas ao BASA</div></div>
+                <div class="event"><div class="dot"></div><div>15/09 — Aguardando retorno BASA</div></div>
+              </div></div>
+              <div class="phase-timeline">
+                <div class="phase current">Requisitos</div><div class="phase pending">Desenvolvimento</div><div class="phase pending">Teste</div><div class="phase pending">Homologação</div><div class="phase pending">Produção</div>
+              </div>
+              <div class="phase-legend"><span><span class="box legend-done"></span> Concluída</span><span><span class="box legend-current"></span> Em desenvolvimento</span><span><span class="box legend-pending"></span> Não iniciada</span></div>
+              <div class="days-remaining" data-legal></div>
+            </div>
+
           </div>
         </section>
 
         <section class="card">
           <strong style="color:var(--secondary)">🧾 Registro de Mudanças</strong>
           <div style="font-size:13px;color:var(--muted)" contenteditable>
+            • 15/09 — Adicionados boxes Tarifa Pix e IN653/IN654/CADOC 1201.<br>
+            • 15/09 — Atualizações nas timelines de Pix Automático e Rate Limit.<br>
             • 10/09 — BASA confirmou Hash como obrigatório; escopo reaberto.<br>
-            • 10/09 — Casos de uso JDPI Pix Automático finalizados.<br>
-            • 04/09 — APN finalizado (Pix Automático).<br>
-            • 30/08 — Inclusão de demandas urgentes (Catálogo JDNPC, Mensagens SPB, Catálogo Pix 5.2.0, Pix Automático 1.1.0).
-          </div>
-        </section>
-
-        <section class="card">
-          <strong style="color:var(--secondary)">🧭 Backlog (Miro)</strong>
-          <p class="meta">Visualização do board no Miro com as solicitações.</p>
-          <div style="aspect-ratio:16/9;border:1px dashed var(--support1);border-radius:8px;overflow:hidden;background:rgba(12,50,36,0.05)">
-            <iframe src="https://miro.com/app/board/uXjVIwZBdss=/" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
+            • 04/09 — APN finalizado (Pix Automático).
           </div>
         </section>
 
         <div class="actions">
           <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
         </div>
-
       </div>
     </div>
   </div>
